@@ -22,35 +22,6 @@
     .button-group { display: flex; flex-direction: column; gap: 2em; align-items: center; margin-top: 3em; }
     img { max-width: 100%; border-radius: 10px; }
     .cta-desc { font-size: 0.95em; color: #444; text-align: center; max-width: 600px; }
-    /* Estilos para o modal de checkout */
-    .checkout-modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0,0,0,0.7);
-      z-index: 1000;
-      overflow: auto;
-    }
-    .checkout-content {
-      background-color: white;
-      margin: 5% auto;
-      padding: 20px;
-      width: 80%;
-      max-width: 700px;
-      border-radius: 10px;
-      position: relative;
-    }
-    .close-checkout {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      font-size: 28px;
-      font-weight: bold;
-      cursor: pointer;
-    }
   </style>
 </head>
 <body>
@@ -103,15 +74,15 @@
 
 <section id="comprar" class="button-group">
   <div>
-    <a href="#" class="cta" onclick="abrirCheckout('digital'); return false;">QUERO A TRANSFORMAÇÃO DIGITAL - COMPRAR AGORA</a>
+    <a href="https://chk.eduzz.com/D0RAV2QJ9Y" target="_blank" class="cta">QUERO A TRANSFORMAÇÃO DIGITAL - COMPRAR AGORA</a>
     <p class="cta-desc">Inclui somente o E-book digital com o método RAPIDO™</p>
   </div>
   <div>
-    <a href="#" class="cta gold" onclick="abrirCheckout('completo'); return false;">QUERO A TRANSFORMAÇÃO COMPLETA - COMPRAR AGORA</a>
+    <a href="https://chk.eduzz.com/D0RAV2QJ9Y" target="_blank" class="cta gold">QUERO A TRANSFORMAÇÃO COMPLETA - COMPRAR AGORA</a>
     <p class="cta-desc">Inclui o E-book + Planner Digital (PDF) para download imediato na página da Eduzz</p>
   </div>
   <div>
-    <a href="#" class="cta red" onclick="abrirCheckout('fisico'); return false;">SIM, QUERO MINHA TRANSFORMAÇÃO AGORA!</a>
+    <a href="https://chk.eduzz.com/D0RAV2QJ9Y" target="_blank" class="cta red">SIM, QUERO MINHA TRANSFORMAÇÃO AGORA!</a>
     <p class="cta-desc">Inclui o E-book + Planner Físico (enviado pelos Correios). Será solicitado seu endereço de entrega.</p>
   </div>
 </section>
@@ -120,75 +91,5 @@
   <p>&copy; 2025 Seu Assistente Pessoal de Bolso - Todos os direitos reservados.</p>
 </footer>
 
-<!-- Modal de Checkout para Versão Digital -->
-<div id="checkout-modal-digital" class="checkout-modal">
-  <div class="checkout-content">
-    <span class="close-checkout" onclick="fecharCheckout('digital')">&times;</span>
-    <h2>Finalizar Compra - Versão Digital</h2>
-    <div id="edz-checkout-digital"></div>
-  </div>
-</div>
-
-<!-- Modal de Checkout para Versão Completa -->
-<div id="checkout-modal-completo" class="checkout-modal">
-  <div class="checkout-content">
-    <span class="close-checkout" onclick="fecharCheckout('completo')">&times;</span>
-    <h2>Finalizar Compra - Versão Completa Digital</h2>
-    <div id="edz-checkout-completo"></div>
-  </div>
-</div>
-
-<!-- Modal de Checkout para Versão Física -->
-<div id="checkout-modal-fisico" class="checkout-modal">
-  <div class="checkout-content">
-    <span class="close-checkout" onclick="fecharCheckout('fisico')">&times;</span>
-    <h2>Finalizar Compra - Versão com Planner Físico</h2>
-    <div id="edz-checkout-fisico"></div>
-  </div>
-</div>
-
-<!-- Script do Checkout Elements da Eduzz -->
-<script src="https://checkout.eduzz.com/script.js" async></script>
-<script>
-  // Função para abrir o modal de checkout
-  function abrirCheckout(produto) {
-    document.getElementById('checkout-modal-' + produto).style.display = 'block';
-    
-    // Inicializar o checkout da Eduzz
-    if (produto === 'digital') {
-      edzCheckout.init({
-        publickey: "SUA_CHAVE_PUBLICA_PRODUTO_DIGITAL", // Substitua pela chave fornecida pela Eduzz
-        content: document.getElementById("edz-checkout-digital"),
-        version: 2
-      });
-    } else if (produto === 'completo') {
-      edzCheckout.init({
-        publickey: "SUA_CHAVE_PUBLICA_PRODUTO_COMPLETO", // Substitua pela chave fornecida pela Eduzz
-        content: document.getElementById("edz-checkout-completo"),
-        version: 2
-      });
-    } else if (produto === 'fisico') {
-      edzCheckout.init({
-        publickey: "SUA_CHAVE_PUBLICA_PRODUTO_FISICO", // Substitua pela chave fornecida pela Eduzz
-        content: document.getElementById("edz-checkout-fisico"),
-        version: 2
-      });
-    }
-  }
-  
-  // Função para fechar o modal de checkout
-  function fecharCheckout(produto) {
-    document.getElementById('checkout-modal-' + produto).style.display = 'none';
-  }
-  
-  // Fechar o modal se o usuário clicar fora da área de conteúdo
-  window.onclick = function(event) {
-    if (event.target.className === 'checkout-modal') {
-      event.target.style.display = 'none';
-    }
-  }
-</script>
-
 </body>
 </html>
-
